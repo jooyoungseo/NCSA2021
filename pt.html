@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Non-Visual Strategies for Making Statistical-Computing Accessible</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="JooYoung Seo" />
+    <script src="libs/header-attrs/header-attrs.js"></script>
+    <link href="libs/remark-css/default.css" rel="stylesheet" />
+    <link href="libs/remark-css/fc.css" rel="stylesheet" />
+    <link href="libs/remark-css/fc-fonts.css" rel="stylesheet" />
+    <link href="libs/remark-css/hygge.css" rel="stylesheet" />
+    <div data-at-shortcutkeys = "&#123;&quot;k&quot;: &quot;Go the previous slide&quot;, &quot;j&quot;: &quot;Go the next slide&quot;, &quot;b&quot;: &quot;Toggle black out a slide&quot;, &quot;m&quot;: &quot;Toggle mirror a slide&quot;, &quot;f&quot;: &quot;Toggle fullscreen mode&quot;, &quot;w&quot;: &quot;Toggle widescreen mode&quot;, &quot;c&quot;: &quot;Clone slides to a new browser window&quot;, &quot;p&quot;: &quot;Toggle the presenter mode&quot;&#125;"></div>
+
+    <script>
+    // Accessible JS script for slide control, written by JooYoung Seo (jooyoung@psu.edu) 10/21/2020.
+    document.addEventListener('DOMContentLoaded', function() {
+      var slideListNum = document.getElementsByClassName("remark-slide-number");
+
+      for (var i = 0; i < slideListNum.length; i++) {
+    //    slideListNum[i].setAttribute('tabindex', '0');
+        slideListNum[i].setAttribute('aria-label', 'Slide Control Region');
+    //    slideListNum[i].setAttribute('accesskey', 'G');
+    //    slideListNum[i].setAttribute('role', 'application');
+      }
+
+      var slideList = document.getElementsByClassName("remark-slide-content");
+
+      for (var i = 0; i < slideList.length; i++) {
+        slideList[i].setAttribute('role', 'main');
+        slideList[i].setAttribute('aria-live', 'assertive');
+        slideList[i].setAttribute('aria-labelledby', 'sp-note');
+      }
+
+
+      var noteList = document.getElementsByClassName("remark-notes");
+
+      for (var i = 0; i < noteList.length; i++) {
+        noteList[i].setAttribute('role', 'comment');
+    //    noteList[i].setAttribute('aria-label', 'Notes');
+        noteList[i].setAttribute('aria-live', 'assertive');
+        noteList[i].setAttribute('id', 'sp-note');
+      }
+
+
+    });
+    </script>
+
+    <style>
+    .sp-note {
+      position: absolute;
+      left:0px;
+      top:-500px;
+      width:1px;
+      height:1px;
+      overflow:hidden;
+    }
+    </style>
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Non-Visual Strategies for Making Statistical-Computing Accessible
+### JooYoung Seo
+### School of Information Sciences<br/>University of Illinois at Urbana-Champaign
+
+---
+
+
+class: center, middle
+
+
+
+<div>
+<style type="text/css">.xaringan-extra-logo {
+width: 110px;
+height: 128px;
+z-index: 0;
+background-image: url(fig/INFOR_FullColor_RGB.png);
+background-size: contain;
+background-repeat: no-repeat;
+position: absolute;
+top:1em;right:1em;
+}
+</style>
+<script>(function () {
+  let tries = 0
+  function addLogo () {
+    if (typeof slideshow === 'undefined') {
+      tries += 1
+      if (tries < 10) {
+        setTimeout(addLogo, 100)
+      }
+    } else {
+      document.querySelectorAll('.remark-slide-content:not(.title-slide):not(.inverse):not(.hide_logo)')
+        .forEach(function (slide) {
+          const logo = document.createElement('div')
+          logo.classList = 'xaringan-extra-logo'
+          logo.href = null
+          slide.appendChild(logo)
+        })
+    }
+  }
+  document.addEventListener('DOMContentLoaded', addLogo)
+})()</script>
+</div>
+
+# How Do I Use Computer?
+
+???
+Start with a basic question.
+
+---
+class: center, middle
+
+# Interaction with Computer
+
+.pull-left-50[
+.content-box-green[.large[.large[## Input
+]]
+![Keyboard and mouse](https://cdn.pixabay.com/photo/2015/09/09/21/38/keyboard-933568_1280.jpg)
+]]
+
+.pull-right-50[
+.content-box-red[.large[.large[## Output]]
+![Monitor](https://cdn.pixabay.com/photo/2016/10/16/16/33/dual-screen-1745705_1280.png)
+]]
+???
+Put it another way. How do I interact with computer input and output?
+
+---
+class: center, middle
+
+# Non-Visual Interaction
+
+.pull-left-50[
+.content-box-green[.large[.large[## Input
+]]
+![Keyboard only](https://pikwizard.com/photos/computer-keyboard-on-close-up-photography--44cb24f8ac7dd255a5b8cd7647be5674-m.jpg)
+]]
+
+???
+Non-visual interaction
+--
+
+.pull-right-50[.content-box-red[.large[.large[
+## Output
+]]
+![Speaker](https://cdn.pixabay.com/photo/2014/04/02/10/41/speaker-304215_960_720.png)
+]]
+???
+Non-visual interaction: keyboard only and speaker instead of computer screen.---
+
+---
+
+class: center, middle
+
+# Statistical-Computing
+
+## Data Science
+
+---
+background-image: url(https://d33wubrfki0l68.cloudfront.net/571b056757d68e6df81a3e3853f54d3c76ad6efc/32d37/diagrams/data-science.png)
+background-size: contain
+
+???
+Import, Tidy, Transform, Visualize, and Model
+
+---
+class: center, middle
+
+# Why R <svg aria-hidden="true" role="img" viewBox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"/></svg>?
+
+- CLI == fully accessible via keyboard.
+
+- Rmd -&gt; reproducibility -&gt; accessibility.
+
+- Accessible open-source packages.
+
+???
+Why R?
+
+As opposed to point-and-click UI, R is a command-line env.
+
+This means that you can everything within terminal console using keyboard only.
+
+Good benefit for keyboard users.
+
+Rmd is a plain text. can be written with any text editor.
+---
+
+# What about IDE Accessibility?
+
+.pull-left-50[.large[.large[
+## RStudio IDE
+
+![:image 70%, RStudio logo](fig/RStudio-Logo-Flat.png)
+
+* Desktop &gt;= v1.3
+
+* Server &gt;= v1.3 (recommendable)
+]]]
+
+.pull-right-50[.large[.large[
+## VSCode
+
+![:image 30%, VSCode logo](https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Visual_Studio_Code_1.35_icon.svg/1200px-Visual_Studio_Code_1.35_icon.svg.png)
+
+### Extensions
+
+* [vscode-R](https://github.com/REditorSupport/vscode-R)
+
+* [VSCode-R-Debugger](https://github.com/ManuelHentschel/VSCode-R-Debugger)
+
+]]]
+
+???
+Why not using IDE?
+
+---
+class: center, middle
+
+# [Using RStudio Server in Windows WSL2](https://support.rstudio.com/hc/en-us/articles/360049776974-Using-RStudio-Server-in-Windows-WSL2)
+
+???
+Use WSL2
+---
+background-image: url(https://d33wubrfki0l68.cloudfront.net/246f0b63660ced61cdb88fae68a6d323ffc464cc/dd74c/2020/03/04/rstudio-1-3-preview-accessibility/accessibility-options.png)
+background-size: contain
+
+.footnote[Contact at [`accessibility@rstudio.com`](mailto:accessibility@rstudio.com)]
+
+???
+RStudio accessibility option.
+---
+background-image: url(https://blog.rstudio.com/2020/03/04/rstudio-1-3-preview-accessibility/focus-indicator-loop.gif)
+background-size: contain
+
+.footnote[Contact at [`accessibility@rstudio.com`](mailto:accessibility@rstudio.com)]
+
+???
+tab key moving focus
+---
+# Accessible Packages
+
+- [{gt}](https://github.com/rstudio/gt): data.frame and tibble.
+
+- [{sonify}](https://cran.r-project.org/web/packages/sonify/): scatter plot and line chart.
+
+- [{BrailleR}](https://github.com/ajrgodfrey/BrailleR): histogram, barplot, and boxplot.
+
+- [{shiny}](https://github.com/rstudio/shiny): interactive navigation.
+
+- [{rmarkdown}](https://github.com/rstudio/rmarkdown): Swiss army knife for accessibility.
+
+???
+Accessible packages
+
+---
+
+class: center, middle, inverse
+
+# Demonstration
+
+---
+class: middle, center
+
+# Data Science Requires *Insight* (NOT Sight)
+
+???
+Data Science Requires Insight (NOT Sight)
+---
+
+# Contact
+
+- <svg aria-hidden="true" role="img" viewBox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M502.3 190.8c3.9-3.1 9.7-.2 9.7 4.7V400c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V195.6c0-5 5.7-7.8 9.7-4.7 22.4 17.4 52.1 39.5 154.1 113.6 21.1 15.4 56.7 47.8 92.2 47.6 35.7.3 72-32.8 92.3-47.6 102-74.1 131.6-96.3 154-113.7zM256 320c23.2.4 56.6-29.2 73.4-41.4 132.7-96.3 142.8-104.7 173.4-128.7 5.8-4.5 9.2-11.5 9.2-18.9v-19c0-26.5-21.5-48-48-48H48C21.5 64 0 85.5 0 112v19c0 7.4 3.4 14.3 9.2 18.9 30.6 23.9 40.7 32.4 173.4 128.7 16.8 12.2 50.2 41.8 73.4 41.4z"/></svg>: [`jseo1005@illinois.edu`](mailto:jseo1005@illinois.edu)
+
+- <svg aria-hidden="true" role="img" viewBox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg>: [`@seo_jooyoung`](https://twitter.com/seo_jooyoung)
+
+- <svg aria-hidden="true" role="img" viewBox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M172.2 226.8c-14.6-2.9-28.2 8.9-28.2 23.8V301c0 10.2 7.1 18.4 16.7 22 18.2 6.8 31.3 24.4 31.3 45 0 26.5-21.5 48-48 48s-48-21.5-48-48V120c0-13.3-10.7-24-24-24H24c-13.3 0-24 10.7-24 24v248c0 89.5 82.1 160.2 175 140.7 54.4-11.4 98.3-55.4 109.7-109.7 17.4-82.9-37-157.2-112.5-172.2zM209 0c-9.2-.5-17 6.8-17 16v31.6c0 8.5 6.6 15.5 15 15.9 129.4 7 233.4 112 240.9 241.5.5 8.4 7.5 15 15.9 15h32.1c9.2 0 16.5-7.8 16-17C503.4 139.8 372.2 8.6 209 0zm.3 96c-9.3-.7-17.3 6.7-17.3 16.1v32.1c0 8.4 6.5 15.3 14.8 15.9 76.8 6.3 138 68.2 144.9 145.2.8 8.3 7.6 14.7 15.9 14.7h32.2c9.3 0 16.8-8 16.1-17.3-8.4-110.1-96.5-198.2-206.6-206.7z"/></svg>: [jooyoungseo.github.io](https://jooyoungseo.github.io)
+
+???
+Contact info
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script src="js/macro.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": true,
+"ratio": "16:9"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
